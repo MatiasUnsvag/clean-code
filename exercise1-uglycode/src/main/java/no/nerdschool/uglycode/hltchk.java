@@ -1,20 +1,29 @@
 package no.nerdschool.uglycode;
-//MISSION CRITICAL
-//opVal and valPres. from fid to consider a cut-out. Three rot to complete halt.
-//NB! halt is expensive, so be CAREFUL!
+
 public class hltchk {
-    //USED in sys.core.fid. Quentin has the requirements - jun 2005
-    public static int cmp(Object i) {
-        {if(i instanceof String){c=(String)i;}else return 0;}
-int x = Integer.parseInt(c.substring(0, 1 + c.indexOf(' ') - skipper));int jeff = Integer.parseInt(c.substring(skipper + c.indexOf(' '),
-c.indexOf(' ', c.indexOf(' ') + 1)));if (c.substring(c.indexOf(' ', 1 + c.indexOf(' '))+ skipper, c.length()).equals("+")) return x+jeff;
+    public static int skipper = 1;
 
-        //BUG: FID-823
+    public static int parseExpression(String input) {
+        int term1 = Integer.parseInt(input.substring(0, input.indexOf(' ') - skipper));
 
-if (c.substring(c.indexOf(' ', 1 + c.indexOf(' '))+ skipper, c.length()).equals("-")) {
-return -jeff - (-x);
-}{if(c.substring(c.indexOf(' ',1+c.indexOf(' '))+skipper).equals("*"))return x*jeff;else return jeff==0?0:
-(int)((skipper /(double)jeff)*x);}}public static int skipper=1;public static String c;{//Also found in C3i 2004-2
-        //TODO: Correct FID-12
+        int term2 = Integer.parseInt(input.substring(skipper + input.indexOf(' '),
+                input.indexOf(' ', input.indexOf(' ') + 1)));
+
+        String operator = input.substring(input.indexOf(' ', 1 + input.indexOf(' ')) + skipper, input.length());
+
+        if (operator.equals("+"))
+            return term1 + term2;
+
+        if (operator.equals("-")) {
+            return -term2 - (-term1);
+        }
+
+        String operator2 = input.substring(input.indexOf(' ', 1 + input.indexOf(' ')) + skipper);
+        if (operator2.equals("*")) return term1 * term2;
+        else return term2 == 0 ? 0 : (int) ((skipper / (double) term2) * term1);
+    }
+
+    public static void main(String[] args) {
+        System.out.print(parseExpression("1 + 1"));
     }
 }

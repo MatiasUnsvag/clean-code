@@ -6,7 +6,7 @@ public class ParcelDelivered extends ParcelStatus {
     private final String status;
 
     public ParcelDelivered(String parcelId, String timestamp, String location, String status) {
-        super(parcelId, timestamp);
+        super(parcelId, timestamp, ParcelStatusType.ParcelDelivered);
 
         this.location = location;
         this.status = status;

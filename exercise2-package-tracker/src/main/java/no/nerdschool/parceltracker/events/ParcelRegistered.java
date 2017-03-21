@@ -6,7 +6,7 @@ public class ParcelRegistered extends ParcelStatus {
     private final String toLocation;
 
     public ParcelRegistered(String parcelId, String timestamp, String fromLocation, String toLocation) {
-        super(parcelId, timestamp);
+        super(parcelId, timestamp, ParcelStatusType.ParcelRegistred);
         this.fromLocation = fromLocation;
         this.toLocation = toLocation;
     }

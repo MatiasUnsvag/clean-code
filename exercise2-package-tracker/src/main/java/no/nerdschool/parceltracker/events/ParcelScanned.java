@@ -5,7 +5,7 @@ public class ParcelScanned extends ParcelStatus {
     private final String location;
 
     public ParcelScanned(String parcelId, String timestamp, String location) {
-        super(parcelId, timestamp);
+        super(parcelId, timestamp,ParcelStatusType.ParcelScanned);
 
         this.location = location;
     }
